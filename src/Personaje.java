@@ -19,8 +19,21 @@ public class Personaje {
             herida.curar(puntos_de_sanacion);
         }
 
-        // Actualizamos el valor de la vida actual.
+        // Eliminamos heridas ya curadas.
+        // Para ello, primero encontramos los índices a eliminar.
+        ArrayList<Integer> indices_a_eliminar = new ArrayList<Integer>();
+        for (int i = heridas.size() - 1; i >= 0; i--){
+            if (heridas.get(i).puntos_de_danyo <= 0){
+                indices_a_eliminar.add(i);
+            }
+        }
+        // Ahora, eliminamos los elementos concretos.
+        for (int i = 0; i < indices_a_eliminar.size(); i++){
+            heridas.remove(indices_a_eliminar.get(i).intValue());
+        }
 
+        // Actualizamos el valor de la vida actual.
+        
     }
 
     String a_texto(){
